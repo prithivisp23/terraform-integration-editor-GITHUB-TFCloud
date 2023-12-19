@@ -129,7 +129,7 @@ resource "aws_security_group" "secg-pub" {
 }
 
 # creation of SecurityGroup-Private(pvt-sg)
-resource "aws_security_group_rule" "secg-pvt" {
+resource "aws_security_group" "secg-pvt" {
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
