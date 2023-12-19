@@ -129,7 +129,7 @@ resource "aws_security_group" "secg-pub" {
 }
 
 # creation of SecurityGroup-Private(pvt-sg)
-resource "aws_security_group" "secg-pvt" {
+resource "aws_security_group_rule" "secg-pvt" {
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
@@ -165,10 +165,10 @@ resource "aws_instance" "web" {
   }
 }
 # Creation of App Server(app-ser)
-resource "aws_instance" "server2" {
+resource "aws_instance" "myapp-ser" {
   ami           = "ami-074f77adfeee318d3"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.secg-pvt.id]
+  vpc_security_group_ids = [aws_security_group_rule.secg-pvt.id]
   subnet_id = aws_subnet.sub-pvt.id
 
   tags = {
