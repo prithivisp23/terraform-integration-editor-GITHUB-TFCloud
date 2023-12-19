@@ -168,7 +168,7 @@ resource "aws_instance" "web" {
 resource "aws_instance" "server2" {
   ami           = "ami-074f77adfeee318d3"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [aws_security_group_rule.secg-pvt.id]
+  vpc_security_group_ids = [aws_security_group.secg-pvt.id]
   subnet_id = aws_subnet.sub-pvt.id
 
   tags = {
